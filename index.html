@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبدالرؤوف واحد بس</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #ff006e, #8338ec);
+            border-radius: 50%;
+            animation: float 12s infinite linear;
+            box-shadow: 0 0 15px currentColor;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Geometric shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+            animation: pulse 8s infinite ease-in-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -10%;
+            animation-delay: -2s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 70%;
+            right: -5%;
+            animation-delay: -4s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 15%;
+            animation-delay: -6s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 0.1;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: slideInDown 1.2s ease-out;
+        }
+
+        .main-title {
+            font-family: 'Amiri', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            text-shadow: 
+                0 0 30px rgba(0, 212, 255, 0.8),
+                0 0 60px rgba(255, 0, 110, 0.4),
+                0 0 90px rgba(131, 56, 236, 0.2);
+            background: linear-gradient(45deg, #00d4ff, #ff006e, #8338ec, #00d4ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Decorative line */
+        .decorative-line {
+            width: 150px;
+            height: 6px;
+            background: linear-gradient(90deg, #00d4ff, #ff006e, #8338ec);
+            margin: 2rem auto;
+            border-radius: 3px;
+            animation: expandContract 3s infinite ease-in-out;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+            position: relative;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #00d4ff, #ff006e);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 15px currentColor;
+        }
+
+        .decorative-line::before {
+            left: -30px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .decorative-line::after {
+            right: -30px;
+            animation: pulse 2s infinite ease-in-out 1s;
+        }
+
+        @keyframes expandContract {
+            0%, 100% {
+                width: 150px;
+            }
+            50% {
+                width: 200px;
+            }
+        }
+
+        /* Content card */
+        .content-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            animation: slideInUp 1.2s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        h3 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff006e;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
+        }
+
+        .content-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            color: #e8e8e8;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        ul {
+        list-style-type: none; /* removes the bullets */
+        padding: 0;            /* optional: removes default padding */
+        margin: 0;             /* optional: removes default margin */
+        }
+
+        li {
+            position: relative;
+            font-size: 1.3rem;
+            padding: 1rem 2.5rem 1rem 3rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.05));
+            border-radius: 15px;
+            border-right: 4px solid #00d4ff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        li::before {
+            content: '◆';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d4ff;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px currentColor;
+            animation: glow 2s infinite ease-in-out alternate;
+        }
+
+        li:hover {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 110, 0.1));
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px currentColor;
+            }
+            100% {
+                text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+            }
+        }
+
+        /* Quote section */
+        .quote-section {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.2), rgba(255, 0, 110, 0.1));
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-right: 5px solid #8338ec;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 4rem;
+            color: #8338ec;
+            font-family: 'Amiri', serif;
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        /* Link styling */
+        a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #ff006e);
+            transition: width 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff006e;
+            text-shadow: 0 0 15px rgba(255, 0, 110, 0.7);
+            transform: translateY(-2px);
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .content-card {
+                padding: 2.5rem 2rem;
+                margin: 2rem auto;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .content-text {
+                font-size: 1.2rem;
+                line-height: 2;
+            }
+
+            li {
+                font-size: 1.1rem;
+                padding: 0.8rem 0 0.8rem 2.5rem;
+            }
+
+            .shape:nth-child(1) {
+                width: 200px;
+                height: 200px;
+            }
+
+            .shape:nth-child(2) {
+                width: 120px;
+                height: 120px;
+            }
+
+            .shape:nth-child(3) {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .content-card {
+                padding: 2rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Hover effects */
+        .content-card:hover {
+            transform: translateY(-8px);
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 50px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        /* Loading animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff006e, #8338ec);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Geometric shapes -->
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">عبدالرؤوف عمك</h1>
+            <div class="decorative-line"></div>
+        </header>
+
+        <main class="content-card">
+            <h2>نبذة عن عبدالرؤوف:</h2>
+            <p class="content-text">
+                محمد عبدالمنعم عبدالرؤوف مواليد 2004
+                في قرية شاوة مركز المنصورة
+                المعروف عن عبدالرقوف انه احد اهم الشخصيات في بلده و لا يوجد من هو في مثل جمدانه
+                و قد اكدت الاحصائيات انه عمك
+                و عم كل من تسول له نفسه 
+                و انه من جيهة تخاف تجيها
+                لذالك وجب علينا التنويه انه علي كل من يتعامل معه ان يعامله بفائق الاحترام و التقدير و ان لا يخاف ولكن يحذر
+            </p>
+
+            <h2>اهم مميزات الكائن العبدالرؤوف:</h2>
+            <ul>
+                <li>الادب</li>
+                <li>الاحترام</li>
+                <li>القوة المفرطة</li>
+                <li>القوة الغاشمة</li>
+                <li>الرجولة الفائقة</li>
+                <li>الاكتاف العريضة</li>
+                <li>جسمه الشيك</li>
+                <li>لبسه الفانتاستيك</li>
+                <li>حب الناس</li>
+            </ul>
+
+            <div class="quote-section">
+                <h3>قول مأثور عن عبدالرؤوف المشهور:</h3>
+                <p class="content-text" style="font-style: italic; color: #f0f0f0; font-size: 1.3rem;">
+                    الي زقك عليا مقدرش عليا; فخلي بالك عشان هنجدهالك
+                </p>
+                <a href="https://www.instagram.com/m.abdelraouf85/" target="_blank">
+                    Abdalraouf's Instagram
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        width="18" height="18" viewBox="0 0 24 24" 
+                        fill="none" stroke="currentColor" stroke-width="2" 
+                        stroke-linecap="round" stroke-linejoin="round" 
+                        style="vertical-align: middle; margin-right: 6px;">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 120; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                
+                // Random color variation
+                const colors = ['#00d4ff', '#ff006e', '#8338ec'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+                particle.style.boxShadow = `0 0 15px ${randomColor}`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll indicator
+        function updateScrollIndicator() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        }
+
+        // Parallax effect for shapes
+        function handleParallax() {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = 0.3 + (index * 0.1);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        }
+
+        // Initialize everything
+        window.addEventListener('load', () => {
+            createParticles();
+            document.body.classList.add('fade-in');
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateScrollIndicator();
+            handleParallax();
+        });
+
+        // Enhanced touch interaction
+        document.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '30px';
+            ripple.style.height = '30px';
+            ripple.style.background = 'radial-gradient(circle, rgba(0, 212, 255, 0.8), rgba(255, 0, 110, 0.4), rgba(131, 56, 236, 0.2))';
+            ripple.style.borderRadius = '50%';
+            ripple.style.left = touch.clientX - 15 + 'px';
+            ripple.style.top = touch.clientY - 15 + 'px';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.animation = 'ripple 1s ease-out forwards';
+            ripple.style.boxShadow = '0 0 30px rgba(0, 212, 255, 0.8)';
+            ripple.style.zIndex = '1000';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 1000);
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Smooth reveal animation for list items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all list items
+        document.addEventListener('DOMContentLoaded', () => {
+            const listItems = document.querySelectorAll('li');
+            listItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.animationDelay = `${index * 0.1}s`;
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
